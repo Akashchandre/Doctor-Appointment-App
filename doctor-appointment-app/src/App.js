@@ -22,7 +22,7 @@ const App = () => {
 
 const MainContent = () => {
   const location = useLocation();
- const noHeaderRoutes = ["/login", "/signup"];
+ const noHeaderRoutes = ["/login", "/signup","/"];
  return (
     <div>
       {!noHeaderRoutes.includes(location.pathname) && <Header />}

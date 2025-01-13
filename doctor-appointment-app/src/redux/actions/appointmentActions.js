@@ -9,7 +9,7 @@ export const fetchAppointments = () => async (dispatch) => {
       throw new Error("No token available, authorization denied");
     }
 
-    const res = await axios.get("https://doctor-appointment-app-ska5.onrender.com/api/appointments", {
+    const res = await axios.get("http://localhost:5000/api/appointments", {
       headers: {
         Authorization: `Bearer ${token}`, 
       },
