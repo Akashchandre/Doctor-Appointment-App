@@ -19,7 +19,7 @@ export const login = (credentials, navigate) => async (dispatch) => {
 
 export const signup = (userData, navigate) => async (dispatch) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", userData);
+      const res = await axios.post("https://doctor-appointment-app-ska5.onrender.com/api/auth/signup", userData);
       dispatch(signupSuccess(res.data));
       toast.success("Signup successful. Please login to continue.");
       navigate("/login");
