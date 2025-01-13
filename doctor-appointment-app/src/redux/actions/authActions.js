@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const login = (credentials, navigate) => async (dispatch) => {
   try {
-    const res = await axios.post("http://localhost:5000/api/auth/login", credentials); // Full URL for login
+    const res = await axios.post("https://doctor-appointment-app-sz3z.onrender.com/api/auth/login", credentials); // Full URL for login
     localStorage.setItem("token", res.data.token);
     dispatch(loginSuccess(res.data));
     navigate("/dashboard");
@@ -19,7 +19,7 @@ export const login = (credentials, navigate) => async (dispatch) => {
 
 export const signup = (userData, navigate) => async (dispatch) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", userData);
+      const res = await axios.post("https://doctor-appointment-app-sz3z.onrender.com/api/auth/signup", userData);
       dispatch(signupSuccess(res.data));
       toast.success("Signup successful. Please login to continue.");
       navigate("/login");

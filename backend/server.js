@@ -27,7 +27,7 @@ const swaggerOptions = {
       },
       servers: [
         {
-          url: "http://localhost:5000/api",
+          url: "https://doctor-appointment-app-sz3z.onrender.com/api",
           description: "Development server",
         },
       ],
@@ -40,7 +40,7 @@ const swaggerOptions = {
         },
       },
     },
-    apis: ["./routes/appointmentRoutes.js", "./routes/authRoutes.js", "./routes/profileRoutes.js"],
+    apis: ["./routes/*.js"],
   };
   
   const swaggerDocs = swaggerJsDoc(swaggerOptions);

@@ -22,7 +22,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:5000/api/profile", {
+        const response = await fetch("https://doctor-appointment-app-sz3z.onrender.com/api/profile", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -79,7 +79,7 @@ const Profile = () => {
   
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("/api/profile", {
+      const response = await fetch("https://doctor-appointment-app-sz3z.onrender.com/api/profile", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
