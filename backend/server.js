@@ -19,38 +19,43 @@ connectDB();
 
 // Swagger setup
 const swaggerOptions = {
-    swaggerDefinition: {
-      openapi: "3.0.0",
-      info: {
-        title: "Doctor Appointment App API",
-        version: "1.0.0",
-        description: "API documentation for the Doctor Appointment Booking system",
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Doctor Appointment App API",
+      version: "1.0.0",
+      description: "API documentation for the Doctor Appointment Booking system",
+    },
+    servers: [
+      {
+        url: "https://doctor-appointment-app-sz3z.onrender.com/api",
+        description: "Development server",
       },
-      servers: [
-        {
-          url: "https://doctor-appointment-app-sz3z.onrender.com/api",
-          description: "Development server",
-        },
-      ],
-      securityDefinitions: {
+    ],
+    components: {
+      securitySchemes: {
         bearerAuth: {
-          type: "apiKey",
-          in: "header",
-          name: "Authorization",
-          description: "JWT authorization token",
+          type: "http",            // Use HTTP authentication
+          scheme: "bearer",        // Specify Bearer token
+          bearerFormat: "JWT",     // Optional, to indicate the token format
         },
       },
     },
-    apis: ["./routes/*.js"],
-  };
-  
-  const swaggerDocs = swaggerJsDoc(swaggerOptions);
-  app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+    security: [
+      {
+        bearerAuth: [],            // Apply bearerAuth globally to all endpoints
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/appointments", appointmentRoutes);
 app.use("/api/profile", profileRoutes);
-
 
 const PORT = process.env.PORT || 5000;
 
